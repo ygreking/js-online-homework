@@ -1,0 +1,14 @@
+{
+  "name": "js-online-homework",
+  "version": "1.0.0",
+  "description": "JS Online Homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Igor Kharabet",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.0.0"
+  }
+}
