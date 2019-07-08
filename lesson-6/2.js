@@ -33,8 +33,8 @@ function filter(array, callback) {
 }
 
 const filteredArray = filter(array, function(item, i, arrayRef) {
-    console.log(i); // индекс элемента
     console.log(item); // элемент массива
+    console.log(i); // индекс элемента
     console.log(arrayRef); // ссылка на обрабатываемый массив
 
     return item === 'Добрый вечер!';
