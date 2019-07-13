@@ -40,15 +40,9 @@ function inspect(array) {
         throw new Error('The argument has to be an array');
     }
 
-    const outArray = [];
-
-    for (item of array) {
-        if (typeof item === 'string') {
-            outArray.push(item.length);
-        }
-    }
-
-    return outArray;
+    return array
+        .filter(item => typeof item === 'string')
+        .map(item => item.length);
 }
 
 const result = inspect(array);

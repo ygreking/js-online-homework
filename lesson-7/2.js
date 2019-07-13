@@ -29,20 +29,13 @@ function collect(array) {
         throw new Error('The argument has to be an array');
     }
 
-    let sum = 0;
-
-    for (item of array) {
+    function doSum(total, item) {
         if (Array.isArray(item)) {
-            sum += collect(item);
-        } else if (typeof item === 'number') {
-            sum += item;
-        } else
-            throw new Error(
-                'The input array should contain numbers and/or arrays only'
-            );
+            return total + item.reduce(doSum, 0);
+        } else return total + item;
     }
 
-    return sum;
+    return array.reduce(doSum, 0);
 }
 
 const array1 = [[[1, 2], [1, 2]], [[2, 1], [1, 2]]];
