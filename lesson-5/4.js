@@ -18,7 +18,7 @@ function extractCurrencyValue(source) {
     if (typeof source !== 'string') {
         throw new Error('input has to be a string.');
     }
-    return source.substring(1) * 1;
+    return Number(source.substring(1));
 }
 
 console.log(extractCurrencyValue(PRICE));
