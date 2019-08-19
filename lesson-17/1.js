@@ -29,19 +29,14 @@ function postpone(start, end, delay) {
     const roundedStart = Math.round(start);
     const roundedEnd = Math.round(end);
     const dirUp = roundedStart < roundedEnd;
+    const total =
+        (dirUp ? roundedEnd - roundedStart : roundedStart - roundedEnd) + 1;
 
-    let timerId = setTimeout(
-        function tick(count) {
-            console.log(count);
-            for (let i = count; dirUp ? i < roundedEnd : i > roundedEnd; ) {
-                timerId = setTimeout(tick, delay, dirUp ? ++i : --i);
-                return;
-            }
-            clearTimeout(timerId);
-        },
-        delay,
-        roundedStart
-    );
+    for (let i = 0; i < total; i++) {
+        setTimeout(() => {
+            console.log(dirUp ? roundedStart + i : roundedStart - i);
+        }, delay * (i + 1));
+    }
 }
 
 postpone(1, 3, 1000);
