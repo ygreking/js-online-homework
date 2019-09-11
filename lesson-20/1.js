@@ -24,15 +24,12 @@ class Customers {
 
     [Symbol.iterator]() {
         let i = 0;
+        const filteredArray = this.db.filter(value => value.verified);
+
         return {
             next: () => {
-                let value;
-                const done = i >= this.db.length;
-                if (done !== true) {
-                    do {
-                        value = this.db[i++];
-                    } while (value.verified !== true);
-                } else value = undefined;
+                const done = i >= filteredArray.length;
+                const value = !done ? filteredArray[i++] : undefined;
                 return { value, done };
             },
         };
