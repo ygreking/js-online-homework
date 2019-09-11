@@ -15,18 +15,13 @@ function getCustomers(customers, countries) {
     return new Promise((resolve, reject) => {
         for (const customer of customers) {
             if (customer.verified) {
-                let hasCountry = false;
-                for (const country of countries) {
-                    if (country.id === customer.id) {
-                        result.push({ ...customer, ...country });
-                        hasCountry = true;
-                        break;
-                    }
-                }
-                if (!hasCountry) {
+                const country = countries.find(item => item.id === customer.id);
+                if (!country) {
                     reject(
                         `We don't have information about country for this customer: ${customer.name}`
                     );
+                } else {
+                    result.push({ ...customer, ...country });
                 }
             }
         }
